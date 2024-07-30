@@ -2,9 +2,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { useFetch } from "@/hooks";
 import { CountryDTO } from "@/schemas";
-import { countriesService } from "@/services";
 import { CountryCard } from "@/components";
 
 import styles from "./styles.module.scss";
@@ -33,17 +31,11 @@ const filterCountries = (
   });
 };
 
-const CountriesList = ({ search, region }: Props) => {
-  const { data, loading, error } = useFetch<CountryDTO[]>(
-    countriesService.getAll,
-  );
-
+const CountriesList = ({ search, region, data }: Props) => {
   const filteredData: CountryDTO[] = useMemo(() => {
     return data ? filterCountries(data, search, region) : [];
   }, [search, region, data]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Something went wrong, please try again later</div>;
   if (!filteredData) return <div>No countries found</div>;
 
   return (
