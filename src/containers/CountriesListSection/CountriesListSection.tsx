@@ -4,9 +4,10 @@ import { useState } from "react";
 
 import { Search, Select } from "@/ui";
 import { CountryDTO } from "@/schemas";
-import CountriesList from "./containers/CountriesList";
+import CountriesList from "@/containers/CountriesListSection/components/CountriesList";
 
 import styles from "./styles.module.scss";
+import RegionSelect from "@/containers/CountriesListSection/components/RegionSelect";
 
 interface Props {
   countries: CountryDTO[];
@@ -24,11 +25,7 @@ const CountriesListSection = ({ countries }: Props) => {
           placeholder={"Search for a country..."}
         />
 
-        <Select
-          placeholder="Filter by region"
-          options={[{ value: "Asia", label: "Asia" }]}
-          onSelect={setRegion}
-        />
+        <RegionSelect onSelect={setRegion} />
       </header>
 
       <div className={styles.CountriesListSection__main}>

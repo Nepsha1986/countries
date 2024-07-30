@@ -9,21 +9,23 @@ interface Option {
 
 interface SelectProps {
   options: Option[];
-  placeholder?: string;
   onSelect: (value: string) => void;
+  placeholder?: string;
+  width?: string;
 }
 
-const Select: React.FC<SelectProps> = ({
+const Select = ({
   options,
   placeholder = "Select...",
   onSelect,
-}) => {
+  width = "180px",
+}: SelectProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSelect(event.target.value);
   };
 
   return (
-    <div className={styles.select}>
+    <div className={styles.select} style={{ width }}>
       <select className={styles.select__dropdown} onChange={handleChange}>
         <option value="">{placeholder}</option>
         {options.map((option) => (

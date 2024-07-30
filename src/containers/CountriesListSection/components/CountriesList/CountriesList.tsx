@@ -36,13 +36,13 @@ const CountriesList = ({ search, region, data }: Props) => {
     return data ? filterCountries(data, search, region) : [];
   }, [search, region, data]);
 
-  if (!filteredData) return <div>No countries found</div>;
+  if (!filteredData.length) return <div>No countries found</div>;
 
   return (
     <ul className={styles.countriesList}>
       {filteredData.map((i) => (
         <li className={styles.countriesList__item} key={i.name.common}>
-          <Link href={`/country/${i.name.common}`}>
+          <Link href={`/country/${i.name.common.toLowerCase()}`}>
             <CountryCard
               img={
                 <Image
