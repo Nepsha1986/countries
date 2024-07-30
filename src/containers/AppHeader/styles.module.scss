@@ -1,0 +1,11 @@
+.appHeader {
+  box-shadow: var(--shadow);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 15px;
+  }
+}
