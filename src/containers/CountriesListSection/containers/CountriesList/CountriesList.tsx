@@ -1,7 +1,13 @@
+import { useMemo } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
 import { useFetch } from "@/hooks";
 import { CountryDTO } from "@/schemas";
 import { countriesService } from "@/services";
-import { useMemo } from "react";
+import { CountryCard } from "@/components";
+
+import styles from "./styles.module.scss";
 
 interface Props {
   search: string;
@@ -38,15 +44,31 @@ const CountriesList = ({ search, region }: Props) => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong, please try again later</div>;
+  if (!filteredData) return <div>No countries found</div>;
 
   return (
-    <div>
-      {!!filteredData.length
-        ? filteredData.map((i) => (
-            <div key={i.name.common}> {i.name.common}</div>
-          ))
-        : "No countries found"}
-    </div>
+    <ul className={styles.countriesList}>
+      {filteredData.map((i) => (
+        <li className={styles.countriesList__item} key={i.name.common}>
+          <Link href={`/country/${i.name.common}`}>
+            <CountryCard
+              img={
+                <Image
+                  src={i.flags.svg}
+                  alt={i.flags.alt}
+                  width={600}
+                  height={300}
+                />
+              }
+              region={i.region}
+              title={i.name.common}
+              population={i.population}
+              capital={i.capital[0]}
+            />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

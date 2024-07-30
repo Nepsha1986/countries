@@ -1,0 +1,29 @@
+.card {
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: var(--text-color);
+
+  &__img {
+    aspect-ratio: 3/2;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__inner {
+    padding: 1rem;
+  }
+}
