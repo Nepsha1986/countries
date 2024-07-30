@@ -3,11 +3,17 @@
 import { useState } from "react";
 
 import { Search, Select } from "@/ui";
-import CountriesList from "./containers/CountriesList";
+import { CountryDTO } from "@/schemas";
+import CountriesList from "@/containers/CountriesListSection/components/CountriesList";
 
 import styles from "./styles.module.scss";
+import RegionSelect from "@/containers/CountriesListSection/components/RegionSelect";
 
-const CountriesListSection = () => {
+interface Props {
+  countries: CountryDTO[];
+}
+
+const CountriesListSection = ({ countries }: Props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [region, setRegion] = useState("");
 
@@ -19,15 +25,11 @@ const CountriesListSection = () => {
           placeholder={"Search for a country..."}
         />
 
-        <Select
-          placeholder="Filter by region"
-          options={[{ value: "Asia", label: "Asia" }]}
-          onSelect={setRegion}
-        />
+        <RegionSelect onSelect={setRegion} />
       </header>
 
       <div className={styles.CountriesListSection__main}>
-        <CountriesList search={searchQuery} region={region} />
+        <CountriesList data={countries} search={searchQuery} region={region} />
       </div>
     </section>
   );

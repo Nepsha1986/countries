@@ -1,0 +1,12 @@
+.defItem {
+  font-size: 0.875rem;
+  margin-bottom: 0.3rem;
+
+  &__term {
+    font-weight: 600;
+  }
+
+  &__def {
+    font-weight: 400;
+  }
+}
