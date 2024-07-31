@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 
-import { Search, Select } from "@/ui";
-import { CountryDTO } from "@/schemas";
-import CountriesList from "@/containers/CountriesListSection/components/CountriesList";
+import { Search } from "@/ui";
+import { PartialCountryDTO } from "@/schemas";
+import CountriesList from "./components/CountriesList";
+import RegionSelect from "./components/RegionSelect";
 
 import styles from "./styles.module.scss";
-import RegionSelect from "@/containers/CountriesListSection/components/RegionSelect";
 
 interface Props {
-  countries: CountryDTO[];
+  countries: PartialCountryDTO[];
 }
 
 const CountriesListSection = ({ countries }: Props) => {

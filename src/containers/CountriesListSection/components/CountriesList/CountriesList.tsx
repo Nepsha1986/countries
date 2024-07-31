@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { CountryDTO } from "@/schemas";
+import { PartialCountryDTO } from "@/schemas";
 import { CountryCard } from "@/components";
 
 import styles from "./styles.module.scss";
@@ -13,10 +13,10 @@ interface Props {
 }
 
 const filterCountries = (
-  countries: CountryDTO[],
+  countries: PartialCountryDTO[],
   searchTerm: string,
   selectedRegion: string,
-): CountryDTO[] => {
+): PartialCountryDTO[] => {
   return countries.filter((country) => {
     const countryRegion = country.region.toLowerCase();
     const normalizedRegion = selectedRegion.toLowerCase();
@@ -32,7 +32,7 @@ const filterCountries = (
 };
 
 const CountriesList = ({ search, region, data }: Props) => {
-  const filteredData: CountryDTO[] = useMemo(() => {
+  const filteredData: PartialCountryDTO[] = useMemo(() => {
     return data ? filterCountries(data, search, region) : [];
   }, [search, region, data]);
 
