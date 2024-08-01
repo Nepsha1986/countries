@@ -13,12 +13,16 @@ interface Props extends React.ComponentProps<typeof Link> {
 }
 
 export const LinkBtn = ({ children, href, size = "md", ...props }: Props) => {
-  const classname = classNames(styles.linkBtn, {
-    [styles[`linkBtn_${size}`]]: !!size,
-  });
+  const { className, ...rest } = props;
+
+  const classname = classNames(
+    styles.linkBtn,
+    styles[`linkBtn_${size}`],
+    className,
+  );
 
   return (
-    <Link href={href} className={classname} {...props}>
+    <Link href={href} className={classname} {...rest}>
       {children}
     </Link>
   );

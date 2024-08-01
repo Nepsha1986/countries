@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 import { countriesService } from "@/services";
-import { DefItem, LinkBtn } from "@/ui";
+import { DefItem } from "@/ui";
 
-import CountryInfoBlock from "./_components/CountryInfoBlock";
-import NeighboursLinks from "./_components/NeighboursLinks";
+import { CountryInfoBlock, NeighboursLinks, BackBtn } from "./_components";
+import { formatNumber } from "@/utils/formatNumber";
 
 export default async function Page({ params }: { params: { id } }) {
   const {
@@ -22,9 +22,7 @@ export default async function Page({ params }: { params: { id } }) {
 
   return (
     <>
-      <LinkBtn style={{ marginBottom: "2rem" }} href="/">
-        Back
-      </LinkBtn>
+      <BackBtn />
 
       <CountryInfoBlock
         heading={name.common}
@@ -35,7 +33,7 @@ export default async function Page({ params }: { params: { id } }) {
               term="Native Name"
               def={name.nativeName[Object.keys(languages)[0]]?.common}
             />
-            <DefItem term="Population" def={population} />
+            <DefItem term="Population" def={formatNumber(population)} />
             <DefItem term="Region" def={region} />
             <DefItem term="Sub Region" def={subregion} />
             <DefItem term="Capital" def={capital.join(",")} />
