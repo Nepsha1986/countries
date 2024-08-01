@@ -1,6 +1,7 @@
 "use client";
-
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles.module.scss";
 
@@ -20,6 +21,10 @@ const Search = ({ placeholder = "Search...", onSearch }: Props) => {
 
   return (
     <div className={styles.search}>
+      <span className={styles.search__icon}>
+        <FontAwesomeIcon icon={faSearch} />
+      </span>
+
       <input
         type="text"
         className={styles.search__input}

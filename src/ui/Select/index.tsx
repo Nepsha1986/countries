@@ -45,7 +45,7 @@ const Select = ({
         {...props}
       >
         {placeholder && (
-          <option value="" disabled selected>
+          <option value="" disabled>
             {placeholder}
           </option>
         )}
