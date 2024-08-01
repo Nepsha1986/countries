@@ -36,7 +36,10 @@ const CountriesList = ({ search, region, data }: Props) => {
     return data ? filterCountries(data, search, region) : [];
   }, [search, region, data]);
 
-  if (!filteredData.length) return <div>No countries found</div>;
+  if (!filteredData.length)
+    return (
+      <p>No countries found with the search query: &quot;{search}&quot;</p>
+    );
 
   return (
     <ul className={styles.countriesList}>

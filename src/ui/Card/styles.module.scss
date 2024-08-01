@@ -4,6 +4,11 @@
   overflow: hidden;
   box-shadow: var(--shadow-100);
   color: var(--text-color);
+  transition: 0.3s scale ease-in-out;
+
+  &:hover {
+    scale: 1.03;
+  }
 
   &__img {
     aspect-ratio: 3/2;
