@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { NextResponse } from "next/server";
 
 import { PartialCountryDTO } from "@/schemas";
@@ -8,7 +8,7 @@ const QUERY_FIELDS = ["name", "flags", "population", "region", "capital"];
 
 export async function GET() {
   try {
-    const { data } = await axios.get<PartialCountryDTO[]>(
+    const { data }: AxiosResponse<PartialCountryDTO[]> = await axios.get(
       EXTERNAL_API_ENDPOINT,
       {
         params: {
