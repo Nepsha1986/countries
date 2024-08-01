@@ -4,8 +4,8 @@
 
   &__icon {
     position: absolute;
-    top: 2px;
-    right: 0;
+    top: 1px;
+    left: 0;
   }
 
   &__dropdown {
@@ -25,8 +25,8 @@
 
   &_ghost {
     #{$this}__dropdown {
+      text-align: right;
       appearance: none;
-      text-align: left;
       padding: 3px 25px;
       background: none;
       box-shadow: none;
