@@ -9,6 +9,7 @@ interface Option {
 }
 
 interface SelectProps extends React.ComponentProps<"select"> {
+  value: string;
   options: Option[];
   onSelect: (value: string) => void;
   placeholder?: string;
@@ -18,6 +19,7 @@ interface SelectProps extends React.ComponentProps<"select"> {
 }
 
 const Select = ({
+  value,
   options,
   placeholder,
   onSelect,
@@ -37,6 +39,7 @@ const Select = ({
     <div className={classname} style={{ width }}>
       {icon && <span className={styles.select__icon}>{icon}</span>}
       <select
+        value={value}
         className={styles.select__dropdown}
         onChange={handleChange}
         {...props}
