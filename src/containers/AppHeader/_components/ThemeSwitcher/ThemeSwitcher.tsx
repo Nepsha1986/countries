@@ -10,10 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Select } from "@/ui";
+import { Theme } from "@/types/theme";
 
 import styles from "./styles.module.css";
-
-type Theme = "light" | "dark" | "system";
 
 const iconMap = new Map<Theme, IconDefinition>([
   ["light", faSun],
@@ -21,7 +20,10 @@ const iconMap = new Map<Theme, IconDefinition>([
   ["system", faAdjust],
 ]);
 
-const ThemeSwitcher = ({ initialTheme }) => {
+interface Props {
+  initialTheme: Theme;
+}
+const ThemeSwitcher = ({ initialTheme }: Props) => {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
   useEffect(() => {
@@ -48,10 +50,11 @@ const ThemeSwitcher = ({ initialTheme }) => {
   return (
     <div className={styles.themeSwitcher}>
       <Select
+        value={theme}
         icon={<FontAwesomeIcon icon={iconMap.get(theme) as IconDefinition} />}
         ghost
         defaultValue={initialTheme}
-        onSelect={handleThemeChange}
+        onSelect={(value) => handleThemeChange(value as Theme)}
         options={[
           {
             value: "light",

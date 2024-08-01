@@ -10,6 +10,7 @@ import styles from "./styles.module.scss";
 interface Props {
   search: string;
   region: string;
+  data: PartialCountryDTO[] | [];
 }
 
 const filterCountries = (

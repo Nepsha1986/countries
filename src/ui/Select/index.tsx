@@ -8,7 +8,7 @@ interface Option {
   label: string;
 }
 
-interface SelectProps extends React.ComponentProps<"select"> {
+interface SelectProps extends Omit<React.ComponentProps<"select">, "onSelect"> {
   value: string;
   options: Option[];
   onSelect: (value: string) => void;

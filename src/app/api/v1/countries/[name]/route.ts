@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { CountryDTO } from "@/schemas";
 
 const COUNTRIES_BY_NAME_ENDPOINT = "https://restcountries.com/v3.1/name";
@@ -17,7 +17,10 @@ const QUERY_FIELDS: (keyof CountryDTO)[] = [
   "borders",
 ];
 
-export async function GET(_, { params }: { params: { name: string } }) {
+export async function GET(
+  _: NextRequest,
+  { params }: { params: { name: string } },
+) {
   const { name } = params;
 
   try {
@@ -46,7 +49,7 @@ export async function GET(_, { params }: { params: { name: string } }) {
     }
 
     return NextResponse.json(country);
-  } catch (e) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+  } catch (e: unknown) {
+    return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
 }

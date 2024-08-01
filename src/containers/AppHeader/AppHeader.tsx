@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 
 import Logo from "./_components/Logo";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
+import { Theme } from "@/types/theme";
 
 import styles from "./styles.module.scss";
 const AppHeader = () => {
@@ -16,7 +17,7 @@ const AppHeader = () => {
           <Logo />
         </Link>
 
-        <ThemeSwitcher initialTheme={theme?.value} />
+        <ThemeSwitcher initialTheme={theme?.value as Theme} />
       </div>
     </header>
   );

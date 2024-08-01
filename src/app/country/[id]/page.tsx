@@ -6,7 +6,7 @@ import { DefItem } from "@/ui";
 import { CountryInfoBlock, NeighboursLinks, BackBtn } from "./_components";
 import { formatNumber } from "@/utils/formatNumber";
 
-export default async function Page({ params }: { params: { id } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const {
     name,
     population,
@@ -31,6 +31,7 @@ export default async function Page({ params }: { params: { id } }) {
           <>
             <DefItem
               term="Native Name"
+              // @ts-ignore
               def={name.nativeName[Object.keys(languages)[0]]?.common}
             />
             <DefItem term="Population" def={formatNumber(population)} />
