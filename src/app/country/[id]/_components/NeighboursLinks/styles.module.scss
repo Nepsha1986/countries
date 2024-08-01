@@ -1,0 +1,21 @@
+.neighboursLinks {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1.5rem;
+
+  &__title {
+    text-wrap: nowrap;
+    margin-top: 0;
+  }
+
+  &__list {
+    display: flex;
+    gap: 5px;
+    flex-flow: row wrap;
+    flex-basis: 300px;
+    flex-grow: 1;
+  }
+
+  &__listItem {
+  }
+}

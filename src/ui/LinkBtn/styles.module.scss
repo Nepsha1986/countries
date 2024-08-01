@@ -4,6 +4,8 @@
   border-radius: 3px;
   box-shadow: var(--shadow);
   color: var(--text-color);
+  background: #fff;
+  transition: 0.23s scale;
 
   &_sm {
     font-size: 0.875rem;
@@ -18,5 +20,9 @@
   &_lg {
     font-size: 1.125rem;
     padding: 0.625rem 1.125rem;
+  }
+
+  &:hover {
+    scale: 1.03;
   }
 }
