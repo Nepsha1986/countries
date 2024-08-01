@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Card } from "@/ui";
-
-import styles from "./styles.module.scss";
+import { Card, DefItem } from "@/ui";
 
 interface Props {
   title: string;
@@ -11,15 +9,6 @@ interface Props {
   region: string;
   capital: string;
 }
-
-const DefItem = ({ term, def }) => {
-  return (
-    <div className={styles.defItem}>
-      <span className={styles.defItem__term}>{term}: </span>
-      <span className={styles.defItem__def}>{def}</span>
-    </div>
-  );
-};
 
 export const CountryCard = ({
   title,

@@ -1,0 +1,31 @@
+.countryInfoBlock {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+
+  @media (min-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__heading {
+    margin-top: 0;
+  }
+
+  &__imgSlot {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  &__slotsArea {
+    display: flex;
+  }
+
+  &__leftSlot,
+  &__rightSlot {
+    flex-grow: 1;
+  }
+}
