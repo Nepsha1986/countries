@@ -1,13 +1,25 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon, faAdjust } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSun,
+  faMoon,
+  faAdjust,
+  IconDefinition,
+} from "@fortawesome/free-solid-svg-icons";
+
+import { Select } from "@/ui";
 
 import styles from "./styles.module.css";
 
 type Theme = "light" | "dark" | "system";
+
+const iconMap = new Map<Theme, IconDefinition>([
+  ["light", faSun],
+  ["dark", faMoon],
+  ["system", faAdjust],
+]);
 
 const ThemeSwitcher = () => {
   const initialTheme = (Cookies.get("theme") as Theme) || "system";
@@ -36,15 +48,26 @@ const ThemeSwitcher = () => {
 
   return (
     <div className={styles.themeSwitcher}>
-      <button onClick={() => handleThemeChange("light")}>
-        <FontAwesomeIcon icon={faSun} />
-      </button>
-      <button onClick={() => handleThemeChange("dark")}>
-        <FontAwesomeIcon icon={faMoon} />
-      </button>
-      <button onClick={() => handleThemeChange("system")}>
-        <FontAwesomeIcon icon={faAdjust} />
-      </button>
+      <Select
+        icon={<FontAwesomeIcon icon={iconMap.get(theme) as IconDefinition} />}
+        ghost
+        defaultValue={initialTheme}
+        onSelect={handleThemeChange}
+        options={[
+          {
+            value: "light",
+            label: "Light",
+          },
+          {
+            value: "dark",
+            label: "Dark",
+          },
+          {
+            value: "system",
+            label: "System",
+          },
+        ]}
+      />
     </div>
   );
 };

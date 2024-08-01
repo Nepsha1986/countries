@@ -3,6 +3,7 @@
 
 :root {
   @include theme.apply-theme(theme.$shared);
+  @include theme.apply-theme(theme.$light);
 }
 
 [data-theme="light"] {

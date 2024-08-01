@@ -1,4 +1,13 @@
 .select {
+  $this: &;
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    top: 2px;
+    right: 0;
+  }
+
   &__dropdown {
     border-radius: 5px;
     border: none;
@@ -11,6 +20,16 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &_ghost {
+    #{$this}__dropdown {
+      appearance: none;
+      text-align: left;
+      padding: 3px 25px;
+      background: none;
+      box-shadow: none;
     }
   }
 }
