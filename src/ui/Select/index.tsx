@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 
 import styles from "./styles.module.scss";
 
@@ -7,27 +8,44 @@ interface Option {
   label: string;
 }
 
-interface SelectProps {
+interface SelectProps extends React.ComponentProps<"select"> {
   options: Option[];
   onSelect: (value: string) => void;
   placeholder?: string;
   width?: string;
+  ghost?: boolean;
+  icon?: React.ReactNode;
 }
 
 const Select = ({
   options,
-  placeholder = "Select...",
+  placeholder,
   onSelect,
-  width = "180px",
+  width = "auto",
+  ghost = false,
+  icon,
+  ...props
 }: SelectProps) => {
+  const classname = classNames(styles.select, {
+    [styles.select_ghost]: ghost,
+  });
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onSelect(event.target.value);
   };
 
   return (
-    <div className={styles.select} style={{ width }}>
-      <select className={styles.select__dropdown} onChange={handleChange}>
-        <option value="">{placeholder}</option>
+    <div className={classname} style={{ width }}>
+      {icon && <span className={styles.select__icon}>{icon}</span>}
+      <select
+        className={styles.select__dropdown}
+        onChange={handleChange}
+        {...props}
+      >
+        {placeholder && (
+          <option value="" disabled selected>
+            {placeholder}
+          </option>
+        )}
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

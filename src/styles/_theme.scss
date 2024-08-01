@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@mixin apply-theme($theme) {
+  @each $key, $value in $theme {
+    --#{$key}: #{$value};
+  }
+}
+
+$colors: (
+  "blue-600": hsl(209, 23%, 22%),
+  "blue-900": hsl(207, 26%, 17%),
+  "grey-600": hsl(0, 0%, 52%),
+  "grey-100": hsl(0, 0%, 98%),
+  "white": hsl(0, 0%, 100%),
+);
+
+$shared: (
+  max-width: 1300px,
+  shadow: 1px 1px 4px -3px #0c0c0c,
+  shadow-100: 0 4px 12px rgba(0, 0, 0, 0.1),
+);
+
+$light: (
+  text-color: map.get($colors, "blue-900"),
+  app-bg-color: map.get($colors, "grey-100"),
+  element-bg-color: map.get($colors, "white"),
+);
+
+$dark: (
+  text-color: map.get($colors, "white"),
+  app-bg-color: map.get($colors, "blue-900"),
+  element-bg-color: map.get($colors, "blue-600"),
+);

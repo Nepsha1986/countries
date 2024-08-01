@@ -1,16 +1,35 @@
 .select {
+  $this: &;
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    top: 1px;
+    left: 0;
+  }
+
   &__dropdown {
     border-radius: 5px;
     border: none;
     padding: 1rem;
     width: 100%;
-    background: #fff;
+    background: var(--element-bg-color);
     box-shadow: var(--shadow-100);
     font-size: 0.875rem;
-    color: #2c2c2c;
+    color: var(--text-color);
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &_ghost {
+    #{$this}__dropdown {
+      text-align: right;
+      appearance: none;
+      padding: 3px 25px;
+      background: none;
+      box-shadow: none;
     }
   }
 }

@@ -4,6 +4,7 @@ import { countriesService } from "@/services";
 import { DefItem, LinkBtn } from "@/ui";
 
 import CountryInfoBlock from "./_components/CountryInfoBlock";
+import NeighboursLinks from "./_components/NeighboursLinks";
 
 export default async function Page({ params }: { params: { id } }) {
   const {
@@ -32,7 +33,7 @@ export default async function Page({ params }: { params: { id } }) {
           <>
             <DefItem
               term="Native Name"
-              def={name.nativeName[Object.keys(languages)[0]].common}
+              def={name.nativeName[Object.keys(languages)[0]]?.common}
             />
             <DefItem term="Population" def={population} />
             <DefItem term="Region" def={region} />
@@ -55,26 +56,7 @@ export default async function Page({ params }: { params: { id } }) {
             />
           </>
         }
-        footer={
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <h3 style={{ textWrap: "nowrap" }}>Border Countries:</h3>
-
-            <div>
-              {!!borders.length
-                ? borders.map((item) => (
-                    <LinkBtn
-                      size="sm"
-                      style={{ marginRight: "5px" }}
-                      key={item}
-                      href={`/country/${item.toLowerCase()}`}
-                    >
-                      {item}
-                    </LinkBtn>
-                  ))
-                : "-"}
-            </div>
-          </div>
-        }
+        footer={<NeighboursLinks borders={borders} />}
       />
     </>
   );

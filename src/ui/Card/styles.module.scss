@@ -1,5 +1,5 @@
 .card {
-  background: #fff;
+  background: var(--element-bg-color);
   border-radius: 5px;
   overflow: hidden;
   box-shadow: var(--shadow-100);
@@ -10,7 +10,6 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    border-bottom: 1px solid #eee;
 
     img {
       width: 100%;
