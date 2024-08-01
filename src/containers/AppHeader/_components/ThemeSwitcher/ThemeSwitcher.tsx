@@ -21,8 +21,7 @@ const iconMap = new Map<Theme, IconDefinition>([
   ["system", faAdjust],
 ]);
 
-const ThemeSwitcher = () => {
-  const initialTheme = (Cookies.get("theme") as Theme) || "system";
+const ThemeSwitcher = ({ initialTheme }) => {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
   useEffect(() => {

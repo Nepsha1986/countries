@@ -1,9 +1,10 @@
 import React from "react";
 import { Select } from "@/ui";
 import { Region } from "@/types/region";
-interface Props extends Pick<React.ComponentProps<typeof Select>, "onSelect"> {}
+interface Props
+  extends Pick<React.ComponentProps<typeof Select>, "onSelect" | "value"> {}
 
-const options: { value: Region; label: string }[] = [
+const options: { value: Region | ""; label: string }[] = [
   {
     value: "africa",
     label: "Africa",
@@ -28,10 +29,15 @@ const options: { value: Region; label: string }[] = [
     value: "oceania",
     label: "Oceania",
   },
+  {
+    value: "",
+    label: "All Regions",
+  },
 ];
-const RegionSelect = ({ onSelect }: Props) => (
+const RegionSelect = ({ onSelect, value }: Props) => (
   <Select
-    placeholder="Filter by region"
+    style={{ width: "200px" }}
+    value={value}
     options={options}
     onSelect={onSelect}
   />

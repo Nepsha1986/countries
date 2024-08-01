@@ -25,7 +25,7 @@ const CountriesListSection = ({ countries }: Props) => {
           placeholder={"Search for a country..."}
         />
 
-        <RegionSelect onSelect={setRegion} />
+        <RegionSelect value={region} onSelect={setRegion} />
       </header>
 
       <div className={styles.CountriesListSection__main}>

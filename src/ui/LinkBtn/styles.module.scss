@@ -1,6 +1,5 @@
 .linkBtn {
   display: inline-block;
-  padding: 0.5rem 1rem;
   border-radius: 3px;
   box-shadow: var(--shadow);
   color: var(--text-color);
@@ -9,17 +8,17 @@
 
   &_sm {
     font-size: 0.875rem;
-    padding: 0.375rem 0.875rem;
+    padding: 0.375rem 1rem;
   }
 
   &_md {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
   }
 
   &_lg {
     font-size: 1.125rem;
-    padding: 0.625rem 1.125rem;
+    padding: 0.625rem 3rem;
   }
 
   &:hover {

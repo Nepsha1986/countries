@@ -12,7 +12,7 @@ const nunitoSans = Nunito_Sans({
 
 export const metadata: Metadata = {
   title: "Countries",
-  description: "TODO",
+  description: "Get information about countries",
 };
 
 export default function RootLayout({
