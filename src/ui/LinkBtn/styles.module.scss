@@ -4,7 +4,7 @@
   border-radius: 3px;
   box-shadow: var(--shadow);
   color: var(--text-color);
-  background: #fff;
+  background: var(--element-bg-color);
   transition: 0.23s scale;
 
   &_sm {

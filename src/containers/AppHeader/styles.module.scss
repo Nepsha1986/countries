@@ -1,6 +1,6 @@
 .appHeader {
   box-shadow: var(--shadow);
-  background: #fff;
+  background: var(--element-bg-color);
 
   &__container {
     display: flex;
